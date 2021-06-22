@@ -1,0 +1,23 @@
+{
+  "name": "NLW06",
+  "version": "1.0.0",
+  "description": "Projeto para a trilha Node.js do evento NLW-06",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zadhart/NLW06.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zadhart/NLW06/issues"
+  },
+  "homepage": "https://github.com/zadhart/NLW06#readme",
+  "devDependencies": {
+    "typescript": "^4.3.4"
+  }
+}
