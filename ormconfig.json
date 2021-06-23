@@ -4,7 +4,11 @@
   "migrations": [
     "src/database/migrations/*.js"
   ],
+  "entities": [
+    "src/entities/*.js"
+  ],
   "cli": {
-    "migrationsDir": "src/database/migrations"
+    "migrationsDir": "src/database/migrations",
+    "entitiesDir": "src/entities"
   }
 }
