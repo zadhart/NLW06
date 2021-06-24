@@ -39,13 +39,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateUserService = void 0;
 var typeorm_1 = require("typeorm");
 var UsersRepositories_1 = require("../repositories/UsersRepositories");
+var bcryptjs_1 = require("bcryptjs");
 var CreateUserService = /** @class */ (function () {
     function CreateUserService() {
     }
     CreateUserService.prototype.execute = function (_a) {
         var name = _a.name, email = _a.email, admin = _a.admin, password = _a.password;
         return __awaiter(this, void 0, void 0, function () {
-            var userRepository, userAlreadyExists, user;
+            var userRepository, userAlreadyExists, passwordHash, user;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -60,14 +61,17 @@ var CreateUserService = /** @class */ (function () {
                         if (userAlreadyExists) {
                             throw new Error("User already exists");
                         }
+                        return [4 /*yield*/, bcryptjs_1.hash(password, 8)];
+                    case 2:
+                        passwordHash = _b.sent();
                         user = userRepository.create({
                             name: name,
                             email: email,
                             admin: admin,
-                            password: password
+                            password: passwordHash
                         });
                         return [4 /*yield*/, userRepository.save(user)];
-                    case 2:
+                    case 3:
                         _b.sent();
                         return [2 /*return*/, user];
                 }
