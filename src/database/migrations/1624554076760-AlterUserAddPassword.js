@@ -36,44 +36,39 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateUserService = void 0;
+exports.AlterUserAddPassword1624554076760 = void 0;
 var typeorm_1 = require("typeorm");
-var UsersRepositories_1 = require("../repositories/UsersRepositories");
-var CreateUserService = /** @class */ (function () {
-    function CreateUserService() {
+var AlterUserAddPassword1624554076760 = /** @class */ (function () {
+    function AlterUserAddPassword1624554076760() {
     }
-    CreateUserService.prototype.execute = function (_a) {
-        var name = _a.name, email = _a.email, admin = _a.admin, password = _a.password;
+    AlterUserAddPassword1624554076760.prototype.up = function (queryRunner) {
         return __awaiter(this, void 0, void 0, function () {
-            var userRepository, userAlreadyExists, user;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        userRepository = typeorm_1.getCustomRepository(UsersRepositories_1.UsersRepositories);
-                        console.log("UserService", email);
-                        if (!email) {
-                            throw new Error("Email invalid");
-                        }
-                        return [4 /*yield*/, userRepository.findOne({ email: email })];
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, queryRunner.addColumn("users", new typeorm_1.TableColumn({
+                            name: "password",
+                            type: "varchar",
+                            isNullable: true
+                        }))];
                     case 1:
-                        userAlreadyExists = _b.sent();
-                        if (userAlreadyExists) {
-                            throw new Error("User already exists");
-                        }
-                        user = userRepository.create({
-                            name: name,
-                            email: email,
-                            admin: admin,
-                            password: password
-                        });
-                        return [4 /*yield*/, userRepository.save(user)];
-                    case 2:
-                        _b.sent();
-                        return [2 /*return*/, user];
+                        _a.sent();
+                        return [2 /*return*/];
                 }
             });
         });
     };
-    return CreateUserService;
+    AlterUserAddPassword1624554076760.prototype.down = function (queryRunner) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, queryRunner.dropColumn("users", "password")];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    return AlterUserAddPassword1624554076760;
 }());
-exports.CreateUserService = CreateUserService;
+exports.AlterUserAddPassword1624554076760 = AlterUserAddPassword1624554076760;

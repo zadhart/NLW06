@@ -43,14 +43,14 @@ var CreateUserController = /** @class */ (function () {
     }
     CreateUserController.prototype.handle = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, name, email, admin, createUserService, user;
+            var _a, name, email, admin, password, createUserService, user;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        _a = request.body, name = _a.name, email = _a.email, admin = _a.admin;
+                        _a = request.body, name = _a.name, email = _a.email, admin = _a.admin, password = _a.password;
                         console.log(email);
                         createUserService = new CreateUserService_1.CreateUserService();
-                        return [4 /*yield*/, createUserService.execute({ name: name, email: email, admin: admin })];
+                        return [4 /*yield*/, createUserService.execute({ name: name, email: email, admin: admin, password: password })];
                     case 1:
                         user = _b.sent();
                         return [2 /*return*/, response.json(user)];
